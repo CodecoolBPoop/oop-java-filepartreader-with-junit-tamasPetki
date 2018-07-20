@@ -16,7 +16,7 @@ public class FilePartReader {
     public FilePartReader() {
         filePath = "resources/test.txt";
         fromLine = 0;
-        toLine = 5;
+        toLine = 10;
     }
 
     public static void main(String[] args) throws IOException {

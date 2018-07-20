@@ -8,7 +8,7 @@ public class FileWordAnalyzer{
 
     public ArrayList wordsbyABC() throws IOException {
         FilePartReader file = new FilePartReader();
-        ArrayList<String> theList = new ArrayList<>(Arrays.asList(file.readLines().split(" ")));
+        ArrayList<String> theList = new ArrayList<>(Arrays.asList(file.readLines().replaceAll("[\\.$|,|;|']","").split(" ")));
         Collections.sort(theList);
         return theList;
     }
