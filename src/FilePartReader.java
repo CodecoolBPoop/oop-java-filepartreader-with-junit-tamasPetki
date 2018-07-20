@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.io.StringReader;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 public class FilePartReader {
@@ -15,15 +16,14 @@ public class FilePartReader {
     public FilePartReader() {
         filePath = "resources/test.txt";
         fromLine = 0;
-        toLine = 0;
+        toLine = 5;
     }
 
-    public static void main(String[] args) {
-        FilePartReader file = new FilePartReader();
-        try {
-            file.readLines();
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static void main(String[] args) throws IOException {
+        FileWordAnalyzer analyze = new FileWordAnalyzer();
+        ArrayList theList = analyze.wordsbyABC();
+        for(Object word: theList) {
+            System.out.println(word);
         }
     }
 
