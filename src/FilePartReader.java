@@ -25,6 +25,8 @@ public class FilePartReader {
         for(Object word: theList) {
             System.out.println(word);
         }
+        System.out.println(analyze.wordsContainingSubString("ali"));
+        System.out.println(analyze.wordsArePalindrome());
     }
 
     public void setup(String filePath, Integer fromLine, Integer toLine) throws IllegalArgumentException {
