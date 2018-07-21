@@ -8,15 +8,20 @@ import java.util.List;
 
 public class FilePartReader {
 
-    String filePath;
-    Integer fromLine;
-    Integer toLine;
-    String thisLine;
+    private String filePath;
+    private Integer fromLine;
+    private Integer toLine;
 
     public FilePartReader() {
         filePath = "resources/test.txt";
         fromLine = 0;
-        toLine = 10;
+        toLine = 1;
+    }
+
+    public FilePartReader(String filePath, Integer fromLine, Integer toLine) {
+        this.filePath = filePath;
+        this.fromLine = fromLine;
+        this.toLine = toLine;
     }
 
     public static void main(String[] args) throws IOException {
@@ -35,7 +40,7 @@ public class FilePartReader {
         this.toLine = toLine;
 
         if (toLine < fromLine || fromLine < 1) {
-            throw new IllegalArgumentException("toLine should be higher than fromLine");
+            throw new IllegalArgumentException("'toLine' should be higher than 'fromLine' AND 'fromLine' must be higher than 0");
         }
     }
 
@@ -53,7 +58,8 @@ public class FilePartReader {
         BufferedReader br = new BufferedReader(new StringReader(read()));
         StringBuilder result = new StringBuilder();
         int counter = 0;
-        while ((thisLine = br.readLine()) != null && counter <= toLine) {
+        String thisLine;
+        while (((thisLine = br.readLine()) != null) && (counter <= toLine)) {
             if (counter >= fromLine) {
                 result.append(thisLine);
                 result.append(System.lineSeparator());

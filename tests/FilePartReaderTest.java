@@ -1,4 +1,3 @@
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 
 import java.io.IOException;
@@ -12,7 +11,7 @@ class FilePartReaderTest {
     public void testIsToLineSmallerThanFromLine() {
         FilePartReader file = new FilePartReader();
         assertThrows(IllegalArgumentException.class, () -> {
-            file.setup("", 15,5);
+            file.setup("", 15, 5);
         });
     }
 
@@ -27,24 +26,41 @@ class FilePartReaderTest {
 
     @Test
     public void testWordsArePalindromeMethod() throws IOException {
-        FileWordAnalyzer file = new FileWordAnalyzer();
-        ArrayList<String> testList = new ArrayList<>(Arrays.asList("non","a","non"));
+        FileWordAnalyzer file = new FileWordAnalyzer("resources/test.txt", 0, 10);
+        ArrayList<String> testList = new ArrayList<>(Arrays.asList("non", "a", "non"));
         assertEquals(file.wordsArePalindrome(), testList);
     }
 
     @Test
-    @Disabled
     public void testWordsABCMethod() throws IOException {
-        FileWordAnalyzer file = new FileWordAnalyzer();
-        ArrayList<String> testList = new ArrayList<>(Arrays.asList("")); //TODO Fill in the list
+        FileWordAnalyzer file = new FileWordAnalyzer("resources/test.txt", 0, 1);
+        ArrayList<String> testList = new ArrayList<>(Arrays.asList(
+                "adipiscing",
+                "amet",
+                "amet",
+                "consectetur",
+                "cras",
+                "diam",
+                "dolor",
+                "elit",
+                "ipsum",
+                "lorem",
+                "lorem",
+                "nec",
+                "neque",
+                "pellentesque",
+                "pretium",
+                "sit",
+                "sit",
+                "tempus",
+                "tincidunt"));
         assertEquals(file.wordsbyABC(), testList);
     }
 
     @Test
-    @Disabled
     public void testWordsContaininSubStringMethod() throws IOException {
-        FileWordAnalyzer file = new FileWordAnalyzer();
-        ArrayList<String> testList = new ArrayList<>(Arrays.asList("")); //TODO Fill in the list
-        assertEquals(file.wordsContainingSubString(""), testList); //TODO Fill in the testString
+        FileWordAnalyzer file = new FileWordAnalyzer("resources/test.txt", 0, 10);
+        ArrayList<String> testList = new ArrayList<>(Arrays.asList("aliquam", "aliquet", "aliquet", "aliquet"));
+        assertEquals(file.wordsContainingSubString("ali"), testList);
     }
 }
